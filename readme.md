@@ -1,6 +1,11 @@
 ```bash
-# run dev mode (autoreload)
-yarn dev:watch
+# run dev mode
+
+## telegram mode 
+yarn dev:watch --telegram
+
+## cli mode
+yarn dev:watch --cli
 
 # build for production
 yarn build

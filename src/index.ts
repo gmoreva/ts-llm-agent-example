@@ -1,1 +1,3 @@
-console.log("Hello, AI Agent!");
+import { selectEntrypoint } from './entrypoint/selector';
+
+selectEntrypoint().run();
