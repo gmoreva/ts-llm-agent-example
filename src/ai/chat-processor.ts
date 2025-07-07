@@ -12,7 +12,12 @@ export class ChatProcessor {
     // Возвращаем простой ответ-заглушку
     return {
       message: `Echo: ${text}`,
-      tools: [],
+      tools: [{
+        name: 'awesome_tool',
+        arguments: {
+          hi: true
+        }
+      }],
     };
   }
 }
