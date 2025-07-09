@@ -1,23 +1,22 @@
-// src/UserSessionManager.ts
+import { AIHelperProvider } from './connector/provider';
+import { AIHelperInterface } from './connector/interface';
 
 export class ChatProcessor {
+  ai: AIHelperInterface;
+
   constructor() {
-    // Пока ничего не инициализируем
+    this.ai = AIHelperProvider.getAiProvider('openai');
   }
 
   async processMessage(sessionId: string, text: string): Promise<{
     message: string;
     tools: { name: string; arguments: Record<string, unknown> }[];
   }> {
-    // Возвращаем простой ответ-заглушку
+    // Пока просто передаем в текстовый режим для теста
+    const result = await this.ai.simpleChat(sessionId, text);
     return {
-      message: `Echo: ${text}`,
-      tools: [{
-        name: 'awesome_tool',
-        arguments: {
-          hi: true
-        }
-      }],
+      message: result,
+      tools: [],
     };
   }
 }
