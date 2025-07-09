@@ -6,16 +6,23 @@
     "dev": "ts-node src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev:watch": "nodemon --exec ts-node src/index.ts"
+    "dev:watch": "nodemon --exec ts-node src/index.ts",
+    "mcp": "node dist/mcp/index.js",
+    "mcp-inspect": "mcp-inspector yarn mcp"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@modelcontextprotocol/inspector": "^0.15.0",
     "@types/node": "^24.0.10",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "zod": "^3.25.75"
   }
 }
