@@ -3,9 +3,10 @@ import { CliEntryPoint } from './cli';
 import { TelegramEntryPoint } from './telegram';
 import { ChatProcessor } from '../ai/chat-processor';
 
-export function selectEntrypoint(): AiEntryPointInterface {
+export async function selectEntrypoint(): Promise<AiEntryPointInterface> {
   const args = process.argv.slice(2);
   const processor = new ChatProcessor();
+  await processor.init();
   if (args.includes('--cli')) {
     return new CliEntryPoint(processor);
   } else if (args.includes('--telegram')) {

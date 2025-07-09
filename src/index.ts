@@ -1,4 +1,6 @@
 import { selectEntrypoint } from './entrypoint/selector';
-import 'dotenv/config'
+import 'dotenv/config';
 
-selectEntrypoint().run();
+selectEntrypoint().then((entrypoint) => {
+  entrypoint.run()
+});
