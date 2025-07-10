@@ -10,7 +10,7 @@ interface Session {
 
 export class OpenAIHelper implements AIHelperInterface {
   /*
-  Объявляем сессиб и задаем колбек для создания
+  Объявляем сессию и задаем колбек для создания
   массива сообщений с system prompt в первом элементе
    */
   protected session: SessionStorage<Session> = new SessionStorage<Session>(() => ({

@@ -10,7 +10,7 @@ export async function selectEntrypoint(): Promise<AiEntryPointInterface> {
   if (args.includes('--cli')) {
     return new CliEntryPoint(processor);
   } else if (args.includes('--telegram')) {
-    return new TelegramEntryPoint();
+    return new TelegramEntryPoint(processor);
   } else {
     throw new Error('Usage: node dist/index.js --cli | --telegram');
   }

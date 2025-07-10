@@ -60,4 +60,8 @@ export class ChatProcessor {
       tools: toolsUsed,
     };
   }
+
+  async resetSession(sessionId: string): Promise<void> {
+    await this.ai.resetSession(sessionId);
+  }
 }
