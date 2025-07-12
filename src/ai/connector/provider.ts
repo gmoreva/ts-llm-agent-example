@@ -30,7 +30,6 @@ export class AIHelperProvider {
           talk: process.env.GIGACHAT_MODEL_TALK || 'GigaChat',
           tools: process.env.GIGACHAT_MODEL_TOOLS || 'GigaChat',
         }, systemPrompt);
-        break;
     }
     throw new Error(`AI provider ${type} not supported`);
   }

@@ -62,7 +62,6 @@ export class GigachatAIHelper implements AIHelperInterface {
       `${this.auth.clientId}:${this.auth.clientSecret}`,
       'utf-8',
     ).toString('base64')}`;
-    ;
   }
 
   async chatWithTools(sessionId: string, message: string, tools: ToolDescriptor[]): Promise<ToolCallRequest> {
