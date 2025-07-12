@@ -13,7 +13,7 @@ export enum AIProvider {
 export class AIHelperProvider {
   static getAiProvider(type: AIProvider): AIHelperInterface {
     switch (type) {
-      case "openai":
+      case AIProvider.OPENAI:
         const openaiApiKey = process.env.OPENAI_API_KEY || '';
         const tools = process.env.OPENAI_MODEL_TOOLS || 'gpt-4.1-mini';
         const talk = process.env.OPENAI_MODEL_TALK || 'gpt-4.1-nano';
@@ -21,7 +21,7 @@ export class AIHelperProvider {
           tools,
           talk
         }, systemPrompt);
-      case "gigachat":
+      case AIProvider.GIGACHAT:
         return new GigachatAIHelper({
           clientId: process.env.GIGACHAT_CLIENT_ID || '',
           clientSecret: process.env.GIGACHAT_CLIENT_SECRET || '',
