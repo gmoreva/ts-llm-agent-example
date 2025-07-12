@@ -6,7 +6,7 @@
     "dev": "ts-node src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev:watch": "nodemon --exec ts-node src/index.ts",
+    "dev:watch": "nodemon --ignore data --exec ts-node src/index.ts",
     "mcp": "node dist/mcp/index.js",
     "mcp-inspect": "mcp-inspector yarn mcp"
   },
@@ -24,6 +24,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.15.0",
     "dotenv": "^17.2.0",
+    "gigachat": "^0.0.14",
     "openai": "^5.8.3",
     "telegraf": "^4.16.3",
     "zod": "^3.25.75"

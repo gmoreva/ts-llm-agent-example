@@ -1,4 +1,4 @@
-import { AIHelperProvider } from './connector/provider';
+import { AIHelperProvider, AIProvider } from './connector/provider';
 import { AIHelperInterface, ToolDescriptor } from './connector/interface';
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
@@ -10,7 +10,12 @@ export class ChatProcessor {
   private tools: ToolDescriptor[] = [];
 
   constructor() {
-    this.ai = AIHelperProvider.getAiProvider('openai');
+    let strings = Object.values(AIProvider);
+    let searchElement = process.env.AI_PROVIDER || 'openai';
+    if (!strings.includes(searchElement as any)) {
+      throw new Error('Wrong AI provider')
+    }
+    this.ai = AIHelperProvider.getAiProvider(searchElement as any);
     this.mcp = new Client({name: 'mcp-client-cli', version: '1.0.0'});
     this.transport = new StdioClientTransport({command: 'node dist/mcp/index.js'});
   }
@@ -30,7 +35,6 @@ export class ChatProcessor {
     const response = await this.ai.chatWithTools(sessionId, text, this.tools);
     if (response.toolCalls && response.toolCalls.length > 0) {
       for (const call of response.toolCalls) {
-        // Сохраняем для статистики
         toolsUsed.push(call);
 
         const result = await this.mcp.callTool({
